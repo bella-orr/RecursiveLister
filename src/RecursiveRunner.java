@@ -1,5 +1,7 @@
-public class RecursiveRunner {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+public class RecursiveRunner
+{
+    public static void main(String[] args)
+    {
+        RecursiveFrame frame = new RecursiveFrame();
     }
 }
