@@ -133,7 +133,7 @@ public class RecursiveFrame extends JFrame
         {
             if (f.isFile())
             {
-                fileLister.append("File Name:" + f.getName() +"\n");
+                fileLister.append("Name:" + f.getName() +"\n");
             }
 
             else
