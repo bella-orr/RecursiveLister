@@ -30,7 +30,7 @@ public class RecursiveFrame extends JFrame
 
     //Declarations for getting directory
     JFileChooser chooser = new JFileChooser();
-    File selectedFile;
+    File selectedDirectory;
 
     public RecursiveFrame()
     {
@@ -112,14 +112,35 @@ public class RecursiveFrame extends JFrame
 
     private void getDirectory() //picks the directory the user choosers
     {
-        File workingDirectory = new File(System.getProperty("user.dir"));
-        chooser.setCurrentDirectory(workingDirectory);
+
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); // only allows user to get a directory
 
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
         {
-            selectedFile = chooser.getSelectedFile();
+            selectedDirectory = chooser.getSelectedFile();
+            fileLister.append("Directory Name:" + selectedDirectory.getName() + "\n\n"); //prints name of the Directory to the JTextArea
+
+            getList(selectedDirectory);
         }
 
+    }
+
+    private void getList(File selectedDirectory)
+    {
+        File files[] = selectedDirectory.listFiles();
+
+        for (File f : files)
+        {
+            if (f.isFile())
+            {
+                fileLister.append("File Name:" + f.getName() +"\n");
+            }
+
+            else
+            {
+                getList(f);
+            }
+        }
 
     }
 }
