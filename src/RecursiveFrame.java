@@ -136,7 +136,7 @@ public class RecursiveFrame extends JFrame
                 fileLister.append("Name:" + f.getName() +"\n");
             }
 
-            else
+            else //uses recursion to list through files
             {
                 getList(f);
             }
